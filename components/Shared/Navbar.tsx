@@ -8,9 +8,9 @@ export default function Navbar() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const links = [
-    { label: "Projets", href: "#work" },
-    { label: "Expériences", href: "#experience" },
-    { label: "Formation", href: "#education" },
+    { label: "Projets", href: "#works" },
+    { label: "Expériences", href: "#experiences" },
+    { label: "Formation", href: "#educations" },
   ];
 
   const styles = {
@@ -23,7 +23,7 @@ export default function Navbar() {
       backdropFilter: "blur(12px)",
       WebkitBackdropFilter: "blur(12px)",
       backgroundColor: "#0a0a0ab3",
-      borderBottom: "1px solid #27272a66",
+      borderBottom: "1px solid #ffffff1a",
     },
     container: {
       maxWidth: "56rem",
