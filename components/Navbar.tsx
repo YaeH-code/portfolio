@@ -36,17 +36,6 @@ export default function Navbar() {
       alignItems: "center",
       justifyContent: "space-between",
     },
-    logoWrapper: {
-      width: "70px",
-      height: "70px",
-      borderRadius: "9999px",
-      padding: "8px",
-      boxShadow: "0 0 0 1px #ffffff14, 0 4px 20px #ffffff0a",
-      backgroundColor: "rgba(255, 255, 255, 0.9)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
     logo: {
       objectFit: "contain",
       width: "100%",
@@ -70,16 +59,14 @@ export default function Navbar() {
     <nav style={styles.navbar}>
       <div style={styles.container}>
         <Link href="/" className="no-underline inline-block">
-          <div style={styles.logoWrapper}>
-            <Image
-              src="/images/ant_logo_64-80.png"
-              alt="Image de l'accueil"
-              width={80}
-              height={80}
-              style={styles.logo}
-              priority
-            />
-          </div>
+          <Image
+            src="/images/logo.png"
+            alt="Image de l'accueil"
+            width={60}
+            height={60}
+            style={styles.logo}
+            priority
+          />
         </Link>
 
         <div style={styles.navLinks}>
