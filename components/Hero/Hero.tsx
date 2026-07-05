@@ -4,8 +4,13 @@ import Image from "next/image";
 import CustomBadge from "./CustomBadge";
 import SkillCards from "./SkillCards";
 import SocialLinks from "./SocialLinks";
+import { useLanguage } from "@/context/LanguageContext";
+import frTranslations from "@/locales/fr.json";
+import enTranslations from "@/locales/en.json";
 
 export default function Hero() {
+  const { lang } = useLanguage();
+  const t = lang === "fr" ? frTranslations : enTranslations;
   const styles = {
     profile: {
       maxWidth: "42rem",
@@ -70,12 +75,9 @@ export default function Hero() {
 
       <div style={styles.container}>
         <p style={styles.introText}>
-          Développeuse Full-Stack spécialisée en{" "}
-          <span className="font-bold text-white">React, C# .NET</span> et
-          titulaire d’une licence. Passionnée par le code, j’apprends vite et
-          j’aime concevoir des architectures robustes. Rigoureuse, organisée et
-          curieuse de nature, je m’adapte rapidement pour apporter une réelle
-          valeur ajoutée à vos équipes dès mon arrivée.
+          {t.hero.introPart1}{" "}
+          <span className="font-bold text-white">React, C# .NET</span>{" "}
+          {t.hero.introPart2}
         </p>
 
         <SkillCards></SkillCards>
