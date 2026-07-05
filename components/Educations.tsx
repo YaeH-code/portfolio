@@ -16,7 +16,7 @@ interface Formation {
 const FORMATIONS: Formation[] = [
   {
     key: "studi",
-    icon: "https://media.licdn.com/dms/image/v2/C4D0BAQHdD7jqdt_9Xg/company-logo_200_200/company-logo_200_200/0/1630577675897/studi_digital_education_logo?e=1784764800&v=beta&t=HZDGJIamOs0zFieDMr2KA5ZsBH_Fwu0gSuh8kkGokHM",
+    icon: "/images/logos/studi.jpg",
     school: "Studi",
     period: "2025 - 2026",
     tags: [
@@ -35,7 +35,7 @@ const FORMATIONS: Formation[] = [
   },
   {
     key: "m2i",
-    icon: "https://media.licdn.com/dms/image/v2/D4D0BAQGtSzkzCF3ybw/company-logo_200_200/B4DZlNjvg1GkAM-/0/1757942839709/m2iformation_logo?e=1784764800&v=beta&t=cNkGwqEY-rs1G19beBaIBWUmPa5U2QZSz0UENuZ-IDU",
+    icon: "/images/logos/m2iformation.jpg",
     school: "M2i Formations",
     period: "2025 — 2026",
     tags: [
@@ -50,7 +50,7 @@ const FORMATIONS: Formation[] = [
   },
   {
     key: "afpa",
-    icon: "https://media.licdn.com/dms/image/v2/D4E0BAQEM9o30NHySWg/company-logo_200_200/company-logo_200_200/0/1718901706220/afpa_logo?e=1784764800&v=beta&t=ICZHmrgAD0pd6NIJ5f3Deb7trQPNNlspLBEX2DU-Yrs",
+    icon: "/images/logos/afpa.jpg",
     school: "Afpa Digital",
     period: "2022 — 2023",
     tags: [

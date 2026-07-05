@@ -19,7 +19,7 @@ const EXPERIENCES: Experience[] = [
   {
     key: "clarsi",
     role: "Développeur Full Stack React.js / C# .NET",
-    icon: "https://media.licdn.com/dms/image/v2/C4E0BAQG3_WBurmR1hw/company-logo_200_200/company-logo_200_200/0/1630651869866/clarsi_logo?e=1784764800&v=beta&t=_d5JgppjFZ4DFBwEBvl7CDltFlNBxBw5ECBfXoZkXCg",
+    icon: "/images/logos/clarsi.jpg",
     company: "Clarsi",
     period: "2026 — Present",
     tags: ["React.js", "Next.Js", "TypeScript", "Tailwind", "SqlServer", "Git"],
@@ -27,7 +27,7 @@ const EXPERIENCES: Experience[] = [
   {
     key: "sosit",
     role: "Développeur Full Stack C# .NET / Blazor",
-    icon: "https://woodtrack-preprod.sos-it.fr/img/logo.99ibqk48ke.jpeg",
+    icon: "/images/logos/sas.jpeg",
     company: "Sos - IT",
     period: "2026",
     tags: ["C#", ".NET", "Blazor", "XUnit", "Docker", "Git"],
@@ -35,7 +35,7 @@ const EXPERIENCES: Experience[] = [
   {
     key: "gottaphish",
     role: "Développeur Full Stack React.js / Node.js",
-    icon: "https://media.licdn.com/dms/image/v2/D4E0BAQE1fc6-JFUY7Q/company-logo_200_200/company-logo_200_200/0/1709653075368/gottaphish_logo?e=1784764800&v=beta&t=6E-oR0448oZb1gyEL06IcWLyK9oBSwsL4aneVemtxcE",
+    icon: "/images/logos/gottaphish.jpg",
     company: "GottaPhish",
     period: "2025 sept - nov",
     tags: [
@@ -53,7 +53,7 @@ const EXPERIENCES: Experience[] = [
   {
     key: "optitmome",
     role: "Webmaster",
-    icon: "https://media.licdn.com/dms/image/v2/D4E0BAQGxTZCy4MHBCw/company-logo_200_200/company-logo_200_200/0/1727792244093/optitmome_logo?e=1784764800&v=beta&t=zQk_ZgHa9rQZ6KWir62QmTCxPyyCxHscWDEGUgFDvTQ",
+    icon: "/images/logos/optitmome.jpg",
     company: "Ô P'tit Môme",
     period: "2024-2025 nov - janv",
     tags: ["WordPress", "Php", "Laravel", "Tailwind", "Git"],
@@ -61,7 +61,7 @@ const EXPERIENCES: Experience[] = [
   {
     key: "cite",
     role: "Développeur Full Stack",
-    icon: "https://media.licdn.com/dms/image/v2/D4E0BAQEbJi6mrlsz1Q/company-logo_200_200/company-logo_200_200/0/1724680386946/cite_formations_tours_logo?e=1784764800&v=beta&t=JBza9V2Xs0GRyoveCjsFx4nxyUU0sUAuYZS5JuZJR2c",
+    icon: "/images/logos/cite_formation.jpg",
     company: "La Cité des Formations",
     period: "2023 juin - août",
     tags: ["Php", "Laravel", "Livewire", "Git", "Github", "MySQL"],
