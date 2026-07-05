@@ -12,7 +12,7 @@ export default function Hero() {
       display: "flex",
       flexDirection: "column",
       margin: "auto",
-      paddingTop: "2.5rem",
+      paddingTop: "2rem",
       gap: "1.25rem",
     },
     imageWrapper: {
