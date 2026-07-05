@@ -1,0 +1,114 @@
+name: Portfolio - CI/CD Pipeline
+
+on:
+  pull_request:
+    branches:
+      - develop
+  push:
+    branches:
+      - staging
+    tags:
+      - "v*.*.*"
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: portfolio
+
+jobs:
+  # ─────────────────────────────────────────────
+  # JOB 1 : CI — PR sur develop
+  # ─────────────────────────────────────────────
+  ci:
+    name: Install - Lint
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: ./package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Tests
+        run: npm run test:ci
+
+  # ─────────────────────────────────────────────
+  # JOB 2 : Docker preprod — push sur staging
+  # ─────────────────────────────────────────────
+  docker-preprod:
+    name: Docker - Build & Push (staging)
+    uses: ./.github/workflows/docker.yml
+    if: github.event_name == 'push' && github.ref == 'refs/heads/staging'
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+    with:
+      image-tag: staging
+      environment: preprod
+    secrets:
+      VITE_API_URL: ${{ secrets.VITE_API_URL_PREPROD }}
+
+  # ─────────────────────────────────────────────
+  # JOB 3 : Docker prod — tag v*.*.*
+  # ─────────────────────────────────────────────
+  docker-prod:
+    name: Docker - Build & Push (production)
+    uses: ./.github/workflows/docker.yml
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+    with:
+      image-tag: latest
+      environment: prod
+    secrets:
+      VITE_API_URL: ${{ secrets.VITE_API_URL }}
+
+  # ─────────────────────────────────────────────
+  # JOB 4 : Deploy preprod
+  # ─────────────────────────────────────────────
+  deploy-preprod:
+    name: Deploy - Preprod
+    uses: ./.github/workflows/deploy.yml
+    needs: docker-preprod
+    if: github.event_name == 'push' && github.ref == 'refs/heads/staging'
+    permissions:
+      packages: read
+    with:
+      deploy-path: ${{ vars.DEPLOY_PATH_PREPROD }}
+    secrets:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      SERVER_HOST: ${{ secrets.SERVER_HOST }}
+      SERVER_USER: ${{ secrets.SERVER_USER }}
+
+  # ─────────────────────────────────────────────
+  # JOB 5 : Deploy prod
+  # ─────────────────────────────────────────────
+  deploy-prod:
+    name: Deploy - Production
+    uses: ./.github/workflows/deploy.yml
+    needs: docker-prod
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      packages: read
+    with:
+      deploy-path: ${{ vars.DEPLOY_PATH_PROD }}
+    secrets:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      SERVER_HOST: ${{ secrets.SERVER_HOST }}
+      SERVER_USER: ${{ secrets.SERVER_USER }}
