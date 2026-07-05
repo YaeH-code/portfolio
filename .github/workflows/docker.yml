@@ -17,12 +17,15 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: portfolio
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   docker:
     name: Build and Push Docker Image
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: Checkout
@@ -57,5 +60,3 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           no-cache: true
-          build-args: |
-            VITE_API_URL=${{ secrets.VITE_API_URL }}
