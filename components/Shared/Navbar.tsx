@@ -37,9 +37,8 @@ export default function Navbar() {
       justifyContent: "space-between",
     },
     logo: {
-      objectFit: "contain",
-      width: "100%",
-      height: "100%",
+      width: "55px",
+      height: "55px",
     },
     navLinks: {
       display: "flex",
@@ -59,14 +58,16 @@ export default function Navbar() {
     <nav style={styles.navbar}>
       <div style={styles.container}>
         <Link href="/" className="no-underline inline-block">
-          <Image
-            src="/images/logo.png"
-            alt="Image de l'accueil"
-            width={60}
-            height={60}
-            style={styles.logo}
-            priority
-          />
+          <div className="border-none " style={styles.logo}>
+            <Image
+              src="/images/logo.png"
+              alt="Image de l'accueil"
+              width={100}
+              height={100}
+              className="object-contain"
+              priority
+            />
+          </div>
         </Link>
 
         <div style={styles.navLinks}>

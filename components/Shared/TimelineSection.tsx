@@ -1,5 +1,6 @@
-import { CSSProperties } from "react";
+"use client";
 import Image from "next/image";
+import { CSSProperties, useEffect, useRef, useState } from "react";
 
 export interface TimelineItem {
   title: string;
@@ -21,6 +22,30 @@ export default function TimelineSection({
   sectionTitle,
   items,
 }: TimelineSectionProps) {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsIntersecting(true);
+          observer.disconnect();
+        }
+      },
+      {
+        rootMargin: "-50px 0px",
+        threshold: 0.1,
+      },
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const styles = {
     section: {
       display: "flex",
@@ -52,6 +77,7 @@ export default function TimelineSection({
       flexDirection: "column",
       alignItems: "flex-start",
       gap: "1rem",
+      opacity: 0,
     } as CSSProperties,
     contentStack: {
       display: "flex",
@@ -123,50 +149,75 @@ export default function TimelineSection({
   } as const;
 
   return (
-    <section id={id} style={styles.section}>
-      <h2 style={styles.heading}>{sectionTitle}</h2>
+    <>
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(15px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
 
-      <div style={styles.listContainer}>
-        {items.map((item, index) => (
-          <div key={index} style={styles.card}>
-            <div style={styles.contentStack}>
-              <div style={styles.cardHeading}>
-                <span style={styles.itemIcon}>
-                  {item.icon && item.icon.trim() !== "" ? (
-                    <Image
-                      src={item.icon}
-                      alt={`${item.subtitle} logo`}
-                      width={24}
-                      height={24}
-                      unoptimized
-                    />
-                  ) : (
-                    <div
-                      style={{
-                        width: 24,
-                        height: 24,
-                        backgroundColor: "#27272a",
-                        borderRadius: "10px",
-                      }}
-                    />
-                  )}
-                </span>
-                <h3 style={styles.itemTitle}>{item.title}</h3>
-                <span style={styles.periodBadge}>{item.period}</span>
-              </div>
-              <p style={styles.itemSubtitle}>{item.subtitle}</p>
-              <div style={styles.tagContainer}>
-                {item.tags.map((tag, tIdx) => (
-                  <span key={tIdx} style={styles.tag}>
-                    {tag}
+      <section id={id} style={styles.section}>
+        <h2 style={styles.heading}>{sectionTitle}</h2>
+
+        <div ref={containerRef} style={styles.listContainer}>
+          {items.map((item, index) => (
+            <div
+              key={index}
+              style={{
+                ...styles.card,
+                animationName: isIntersecting ? "fadeInUp" : "none",
+                animationDuration: "1.5s",
+                animationTimingFunction: "ease-in-out",
+                animationFillMode: "forwards",
+                animationDelay: isIntersecting ? `${index * 150}ms` : "0ms",
+              }}
+            >
+              <div style={styles.contentStack}>
+                <div style={styles.cardHeading}>
+                  <span style={styles.itemIcon}>
+                    {item.icon && item.icon.trim() !== "" ? (
+                      <Image
+                        src={item.icon}
+                        alt={`${item.subtitle} logo`}
+                        width={24}
+                        height={24}
+                        unoptimized
+                      />
+                    ) : (
+                      <div
+                        style={{
+                          width: 24,
+                          height: 24,
+                          backgroundColor: "#27272a",
+                          borderRadius: "10px",
+                        }}
+                      />
+                    )}
                   </span>
-                ))}
+                  <h3 style={styles.itemTitle}>{item.title}</h3>
+                  <span style={styles.periodBadge}>{item.period}</span>
+                </div>
+                <p style={styles.itemSubtitle}>{item.subtitle}</p>
+                <div style={styles.tagContainer}>
+                  {item.tags.map((tag, tIdx) => (
+                    <span key={tIdx} style={styles.tag}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <p style={styles.descriptionText}>{item.description}</p>
               </div>
-              <p style={styles.descriptionText}>{item.description}</p>
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }

@@ -41,6 +41,8 @@ export default function SkillsGrid() {
       backgroundColor: "#121212",
       borderRadius: "1rem",
       border: "1px solid #18181b",
+      animation: "fadeInUp 0.6s ease forwards",
+      opacity: 0,
     },
     cardTitle: {
       fontSize: "1rem",
@@ -61,23 +63,58 @@ export default function SkillsGrid() {
       color: "#a1a1aa",
       display: "flex",
       alignItems: "flex-start",
+      animation: "fadeInUp 0.4s ease forwards",
+      opacity: 0,
     },
   } as const;
 
   return (
-    <div style={styles.grid}>
-      {SKILLS_DATA.map((card, cardIdx) => (
-        <div key={cardIdx} style={styles.card}>
-          <p style={styles.cardTitle}>{card.title}</p>
-          <ul style={styles.list}>
-            {card.items.map((item, itemIdx) => (
-              <li key={itemIdx} style={styles.listItem}>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
+    <>
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+
+      <div style={styles.grid}>
+        {SKILLS_DATA.map((card, cardIdx) => (
+          <div
+            key={cardIdx}
+            style={{
+              ...styles.card,
+              animationDelay: `${cardIdx * 0.15}s`,
+            }}
+          >
+            <p style={styles.cardTitle}>{card.title}</p>
+            <ul style={styles.list}>
+              {card.items.map((item, itemIdx) => {
+                // Calculates a progressive delay for each individual item across both cards
+                const globalIndex = cardIdx * 4 + itemIdx;
+
+                return (
+                  <li
+                    key={itemIdx}
+                    style={{
+                      ...styles.listItem,
+                      // Staggers each item by 0.08 seconds
+                      animationDelay: `${0.2 + globalIndex * 0.08}s`,
+                    }}
+                  >
+                    {item}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
