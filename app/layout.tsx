@@ -11,8 +11,9 @@ const notoSans = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Full-Stack Developer",
-  description: "Crafted beautifully with Next.js & TypeScript.",
+  title: "Portfolio - Full-Stack Developer",
+  description:
+    "Propulsé par Next.js & React TypeScript. Découvrez mes projets et réalisations.",
 };
 
 export default function RootLayout({

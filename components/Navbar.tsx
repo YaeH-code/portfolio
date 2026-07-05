@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -21,7 +23,7 @@ export default function Navbar() {
       backdropFilter: "blur(12px)",
       WebkitBackdropFilter: "blur(12px)",
       backgroundColor: "#0a0a0ab3",
-      borderBottom: "#27272a66",
+      borderBottom: "1px solid #27272a66",
     },
     container: {
       maxWidth: "56rem",
@@ -29,17 +31,26 @@ export default function Navbar() {
       marginRight: "auto",
       paddingLeft: "1.5rem",
       paddingRight: "1.5rem",
-      height: "3.5rem",
+      height: "100px",
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
     },
+    logoWrapper: {
+      width: "70px",
+      height: "70px",
+      borderRadius: "9999px",
+      padding: "8px",
+      boxShadow: "0 0 0 1px #ffffff14, 0 4px 20px #ffffff0a",
+      backgroundColor: "rgba(255, 255, 255, 0.9)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
     logo: {
-      fontSize: "1rem",
-      fontWeight: 600,
-      color: "#ffffff",
-      letterSpacing: "-0.01em",
-      opacity: 0.95,
+      objectFit: "contain",
+      width: "100%",
+      height: "100%",
     },
     navLinks: {
       display: "flex",
@@ -58,20 +69,30 @@ export default function Navbar() {
   return (
     <nav style={styles.navbar}>
       <div style={styles.container}>
-        <span style={styles.logo}>Yae Umehara</span>
+        <Link href="/" className="no-underline inline-block">
+          <div style={styles.logoWrapper}>
+            <Image
+              src="/images/ant_logo_64-80.png"
+              alt="Image de l'accueil"
+              width={80}
+              height={80}
+              style={styles.logo}
+              priority
+            />
+          </div>
+        </Link>
 
         <div style={styles.navLinks}>
           {links.map((link, index) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
-              className="text-base"
               style={styles.link(hoveredIndex === index)}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
       </div>
