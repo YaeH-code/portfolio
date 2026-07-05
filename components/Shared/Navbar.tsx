@@ -3,14 +3,20 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
+import frTranslations from "@/locales/fr.json";
+import enTranslations from "@/locales/en.json";
 
 export default function Navbar() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
+  const { lang, toggleLang } = useLanguage();
+  const t = lang === "fr" ? frTranslations : enTranslations;
+
   const links = [
-    { label: "Projets", href: "#works" },
-    { label: "Expériences", href: "#experiences" },
-    { label: "Formation", href: "#educations" },
+    { label: t.navbar.projects, href: "#works" },
+    { label: t.navbar.experiences, href: "#experiences" },
+    { label: t.navbar.educations, href: "#educations" },
   ];
 
   const styles = {
@@ -57,19 +63,20 @@ export default function Navbar() {
   return (
     <nav style={styles.navbar}>
       <div style={styles.container}>
-        <Link href="/" className="no-underline inline-block">
-          <div className="border-none " style={styles.logo}>
-            <Image
-              src="/images/logo.png"
-              alt="Image de l'accueil"
-              width={100}
-              height={100}
-              className="object-contain"
-              priority
-            />
-          </div>
+        <Link
+          href="/"
+          className="no-underline inline-block"
+          style={{ width: 60, height: 60 }}
+        >
+          <Image
+            src="/images/logo.png"
+            alt="Image de l'accueil"
+            width={60}
+            height={60}
+            style={styles.logo}
+            priority
+          />
         </Link>
-
         <div style={styles.navLinks}>
           {links.map((link, index) => (
             <Link
@@ -82,6 +89,21 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <button
+            onClick={toggleLang}
+            style={{
+              padding: "0.25rem 0.625rem",
+              fontSize: "0.75rem",
+              fontWeight: 600,
+              color: "#a1a1aa",
+              backgroundColor: "transparent",
+              border: "1px solid #ffffff1a",
+              borderRadius: "0.375rem",
+              cursor: "pointer",
+            }}
+          >
+            {lang === "fr" ? "EN" : "FR"}
+          </button>
         </div>
       </div>
     </nav>

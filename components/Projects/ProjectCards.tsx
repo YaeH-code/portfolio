@@ -1,11 +1,16 @@
+"use client";
+
 import { useState, CSSProperties } from "react";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
+import frTranslations from "@/locales/fr.json";
+import enTranslations from "@/locales/en.json";
 
 interface Project {
+  key: "eminaCoiffure" | "innovEvents" | "gottaPostal";
   title: string;
-  description: string;
   tags: string[];
   liveLink: string;
   githubLink?: string;
@@ -15,10 +20,8 @@ interface Project {
 
 const PROJECTS: Project[] = [
   {
+    key: "eminaCoiffure",
     title: "Emina Coiffure",
-    description: `Une application React.js élégante au service d'un véritable salon de coiffure visagiste, 
-      mêlant vitrine digitale et réservation intelligente avec un blocage 
-      des créneaux sur-mesure selon la prestation choisie.`,
     tags: [
       "React.js",
       "TypeScript",
@@ -32,11 +35,8 @@ const PROJECTS: Project[] = [
     image: "/images/site-eminacoiffure.png",
   },
   {
+    key: "innovEvents",
     title: "Innov'Events",
-    description: `Une solution client-serveur conteneurisée (Web et API Docker) 
-    centralisant la gestion événementielle d'une agence via un CRM fiable, 
-    la génération automatique de devis PDF et un suivi collaboratif des tâches.
-    `,
     tags: [
       "Angular",
       "TypeScript",
@@ -53,9 +53,8 @@ const PROJECTS: Project[] = [
     image: "/images/site-innovevent.png",
   },
   {
+    key: "gottaPostal",
     title: "GottaPostal",
-    description: `Une plateforme SMTP gratuite et performante dédiée à l'envoi d'e-mails, 
-    la gestion de campagnes marketing et la réalisation de tests légaux de sensibilisation au phishing`,
     tags: ["Hugo", "Go", "CloudFlare", "Docker", "HTML", "CSS", "JavaScript"],
     liveLink: "https://gottapostal.gottaphish.com/",
     githubLink: "https://github.com/YaeH-code/GottaPostal",
@@ -161,6 +160,8 @@ const styles = {
 } as const;
 
 export default function ProjectCards() {
+  const { lang } = useLanguage();
+  const t = lang === "fr" ? frTranslations : enTranslations;
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [hoveredIcon, setHoveredIcon] = useState<{
     cardIdx: number;
@@ -269,7 +270,9 @@ export default function ProjectCards() {
                   </a>
                 </div>
               </div>
-              <p style={styles.description}>{project.description}</p>
+              <p style={styles.description}>
+                {t.projects[project.key].description}
+              </p>
             </div>
 
             <div style={styles.tagContainer}>

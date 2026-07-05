@@ -1,4 +1,12 @@
+"use client";
+
+import { useLanguage } from "@/context/LanguageContext";
+import frTranslations from "@/locales/fr.json";
+import enTranslations from "@/locales/en.json";
+
 export default function Footer() {
+  const { lang } = useLanguage();
+  const t = lang === "fr" ? frTranslations : enTranslations;
   const styles = {
     footer: {
       borderTop: "1px solid #27272a99",
@@ -17,8 +25,7 @@ export default function Footer() {
   return (
     <footer style={styles.footer}>
       <p style={styles.text}>
-        © {new Date().getFullYear()} Yae Umehara • Portfolio • Developpeur Full
-        Stack
+        © {new Date().getFullYear()} Yae Umehara • {t.footer.text}
       </p>
     </footer>
   );

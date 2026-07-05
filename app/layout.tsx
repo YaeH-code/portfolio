@@ -3,6 +3,7 @@ import { Noto_Sans } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Shared/Footer";
 import Navbar from "@/components/Shared/Navbar";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],
@@ -23,13 +24,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body
-        className={`${notoSans.className} min-h-screen bg-[#0a0a0a] text-zinc-300 font-sans selection:bg-zinc-800 selection:text-white antialiased`}
-      >
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
+      <LanguageProvider>
+        <body
+          className={`${notoSans.className} min-h-screen bg-[#0a0a0a] text-zinc-300 font-sans selection:bg-zinc-800 selection:text-white antialiased`}
+        >
+          <Navbar />
+          {children}
+          <Footer />
+        </body>
+      </LanguageProvider>
     </html>
   );
 }

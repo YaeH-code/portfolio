@@ -1,4 +1,7 @@
 import { ReactNode } from "react";
+import { useLanguage } from "@/context/LanguageContext";
+import frTranslations from "@/locales/fr.json";
+import enTranslations from "@/locales/en.json";
 
 interface SkillCardData {
   title: string;
@@ -6,27 +9,11 @@ interface SkillCardData {
 }
 
 export default function SkillsGrid() {
+  const { lang } = useLanguage();
+  const t = lang === "fr" ? frTranslations : enTranslations;
   const SKILLS_DATA: SkillCardData[] = [
-    {
-      title: "💻 Expertise Technique",
-      items: [
-        "Programmation Orientée Objet (POO)",
-        "C# .NET, Java, PHP, TypeScript",
-        "React, Angular, Next, Laravel",
-        "HTML5, CSS3, JavaScript",
-        "SQL, PostgreSQL, NoSQL",
-        "(Développement de fonctionnalités dynamiques, intégration d'API)",
-      ],
-    },
-    {
-      title: "✨ Soft Skills",
-      items: [
-        "Capacité d’adaptation rapide",
-        "Curiosité technologique constante",
-        "Rigueur et sens de l’organisation",
-        "Engagement & esprit d’équipe",
-      ],
-    },
+    { title: t.skills.technicalTitle, items: t.skills.technicalItems },
+    { title: t.skills.softSkillsTitle, items: t.skills.softItems },
   ];
 
   const styles = {
