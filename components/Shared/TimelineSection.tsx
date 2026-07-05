@@ -3,11 +3,11 @@ import Image from "next/image";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 
 export interface TimelineItem {
-  title: string;
+  title?: string;
   subtitle: string;
   icon: string;
   period: string;
-  description: string;
+  description?: string;
   tags: string[];
 }
 

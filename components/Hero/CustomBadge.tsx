@@ -1,10 +1,15 @@
 import { CSSProperties } from "react";
+import { useLanguage } from "@/context/LanguageContext";
+import frTranslations from "@/locales/fr.json";
+import enTranslations from "@/locales/en.json";
 
 interface CustomBadgeProps {
   isOpen: boolean;
 }
 
 export default function CustomBadge({ isOpen }: CustomBadgeProps) {
+  const { lang } = useLanguage();
+  const t = lang === "fr" ? frTranslations : enTranslations;
   const styles = {
     badge: {
       display: "inline-flex",
@@ -31,7 +36,7 @@ export default function CustomBadge({ isOpen }: CustomBadgeProps) {
   return (
     <div style={styles.badge}>
       <span style={styles.badgeDot} />
-      {isOpen ? "Open to work" : "Not available"}
+      {isOpen ? t.badge.open : t.badge.closed}
     </div>
   );
 }

@@ -1,47 +1,43 @@
-import Image from "next/image";
+"use client";
+
 import { CSSProperties } from "react";
 import TimelineSection, { TimelineItem } from "./Shared/TimelineSection";
+import { useLanguage } from "@/context/LanguageContext";
+import frTranslations from "@/locales/fr.json";
+import enTranslations from "@/locales/en.json";
 
 interface Experience {
+  key: "clarsi" | "sosit" | "gottaphish" | "optitmome" | "cite";
   role: string;
   icon: string;
   company: string;
   period: string;
-  description: string;
   tags: string[];
 }
 
 const EXPERIENCES: Experience[] = [
   {
+    key: "clarsi",
     role: "Développeur Full Stack React.js / C# .NET",
     icon: "https://media.licdn.com/dms/image/v2/C4E0BAQG3_WBurmR1hw/company-logo_200_200/company-logo_200_200/0/1630651869866/clarsi_logo?e=1784764800&v=beta&t=_d5JgppjFZ4DFBwEBvl7CDltFlNBxBw5ECBfXoZkXCg",
     company: "Clarsi",
     period: "2026 — Present",
-    description: `Développement d'une application web en React / Next.js dédiée à la gestion des comptes personnels 
-    des abonnés et adhérents de la Fédération Française de la Randonnée.
-    Intégration de validations de données strictes avec Zod et consommation sécurisée d'une API Gateway via Axios.
-    Exploitation des stratégies de rendu hybrides de Next.js pour optimiser les performances d'affichage et la vitesse de chargement initial de l'espace adhérent.`,
     tags: ["React.js", "Next.Js", "TypeScript", "Tailwind", "SqlServer", "Git"],
   },
   {
+    key: "sosit",
     role: "Développeur Full Stack C# .NET / Blazor",
     icon: "https://woodtrack-preprod.sos-it.fr/img/logo.99ibqk48ke.jpeg",
     company: "Sos - IT",
     period: "2026",
-    description: `Développement en Clean Architecture (.NET 10 / EF Core) d'une application de gestion de chantiers pour le transport routier, 
-      intégrant des composants Blazor réutilisables, des formulaires multi-étapes, 
-      la génération de PDF de Lettre de Voiture et des tests unitaires/d'intégration rigoureux.`,
     tags: ["C#", ".NET", "Blazor", "XUnit", "Docker", "Git"],
   },
   {
+    key: "gottaphish",
     role: "Développeur Full Stack React.js / Node.js",
     icon: "https://media.licdn.com/dms/image/v2/D4E0BAQE1fc6-JFUY7Q/company-logo_200_200/company-logo_200_200/0/1709653075368/gottaphish_logo?e=1784764800&v=beta&t=6E-oR0448oZb1gyEL06IcWLyK9oBSwsL4aneVemtxcE",
     company: "GottaPhish",
     period: "2025 sept - nov",
-    description: `Contribution au développement et à l'amélioration continue de la plateforme de cybersécurité GottaPhish, 
-    dédiée à la formation et à la prévention des risques de phishing via des campagnes dynamiques et personnalisées. 
-    Réalisation complète et déploiement sous Docker d'une application web (GottaPostal), généré avec Hugo, donnant accès à un serveur SMTP. 
-    Modernisation de la suite de tests end-to-end de l'application principale à l'aide de Playwright et Node.js.`,
     tags: [
       "React.js",
       "Node.js",
@@ -55,37 +51,35 @@ const EXPERIENCES: Experience[] = [
     ],
   },
   {
+    key: "optitmome",
     role: "Webmaster",
     icon: "https://media.licdn.com/dms/image/v2/D4E0BAQGxTZCy4MHBCw/company-logo_200_200/company-logo_200_200/0/1727792244093/optitmome_logo?e=1784764800&v=beta&t=zQk_ZgHa9rQZ6KWir62QmTCxPyyCxHscWDEGUgFDvTQ",
     company: "Ô P'tit Môme",
     period: "2024-2025 nov - janv",
-    description: `Optimisation de la satisfaction client et de la productivité interne grâce à une analyse rigoureuse des besoins et une communication fluide, 
-    concrétisées par l'intégration de maquettes sous PHP Laravel et WordPress pour offrir une UX/UI améliorée.`,
     tags: ["WordPress", "Php", "Laravel", "Tailwind", "Git"],
   },
   {
+    key: "cite",
     role: "Développeur Full Stack",
     icon: "https://media.licdn.com/dms/image/v2/D4E0BAQEbJi6mrlsz1Q/company-logo_200_200/company-logo_200_200/0/1724680386946/cite_formations_tours_logo?e=1784764800&v=beta&t=JBza9V2Xs0GRyoveCjsFx4nxyUU0sUAuYZS5JuZJR2c",
     company: "La Cité des Formations",
     period: "2023 juin - août",
-    description: `Conception et développement d’un outil collaboratif inter-services en interface directe avec l'équipe technique et le client. 
-    Ce projet a englobé la refonte UI/UX responsive, l'implémentation de vues dynamiques par profil, ainsi que la création de composants sur mesure 
-    (moteur de recherche, fenêtres modales, Iconpicker), le tout accompagné d'une gestion de versions rigoureuse sous Git/GitHub et clôturé par 
-    l'animation de la démonstration technique finale devant le client.`,
     tags: ["Php", "Laravel", "Livewire", "Git", "Github", "MySQL"],
   },
 ];
 
-const formattedExperiences: TimelineItem[] = EXPERIENCES.map((exp) => ({
-  title: exp.role,
-  subtitle: exp.company,
-  icon: exp.icon,
-  period: exp.period,
-  description: exp.description,
-  tags: exp.tags,
-}));
-
 export default function Experiences() {
+  const { lang } = useLanguage();
+  const t = lang === "fr" ? frTranslations : enTranslations;
+
+  const formattedExperiences: TimelineItem[] = EXPERIENCES.map((exp) => ({
+    title: t.experiences[exp.key].role,
+    subtitle: exp.company,
+    icon: exp.icon,
+    period: exp.period,
+    description: t.experiences[exp.key].description,
+    tags: exp.tags,
+  }));
   const styles = {
     section: {
       display: "flex",

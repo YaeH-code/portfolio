@@ -1,0 +1,88 @@
+{
+  "navbar": {
+    "projects": "Projects",
+    "experiences": "Experience",
+    "educations": "Education"
+  },
+  "hero": {
+    "introPart1": "Full-Stack Developer specialized in",
+    "introPart2": "and holder of a bachelor's degree. Passionate about code and I am a fast learner. I enjoy working with design patterns and robust architectures. Rigorous, organized, and naturally curious, I adapt quickly to bring real added value to your teams from day one."
+  },
+  "badge": {
+    "open": "Open to work",
+    "closed": "Not available"
+  },
+  "skills": {
+    "technicalTitle": "💻 Technical Expertise",
+    "softSkillsTitle": "✨ Soft Skills",
+    "technicalItems": [
+      "Object-Oriented Programming (OOP)",
+      "C# .NET, Java, PHP, TypeScript",
+      "React, Angular, Next, Laravel",
+      "HTML5, CSS3, JavaScript",
+      "SQL, PostgreSQL, NoSQL",
+      "(Development of dynamic features, API integration)"
+    ],
+    "softItems": [
+      "Fast adaptability",
+      "Constant technological curiosity",
+      "Rigor and organizational skills",
+      "Commitment & team spirit"
+    ]
+  },
+  "projects": {
+    "heading": "Projects",
+    "eminaCoiffure": {
+      "description": "An elegant React.js application powering a real hair salon specialized in face-shape styling, combining a digital showcase with smart booking and custom time-slot blocking depending on the service chosen."
+    },
+    "innovEvents": {
+      "description": "A containerized client-server solution (Web and API in Docker) centralizing an agency's event management through a reliable CRM, automatic PDF quote generation, and collaborative task tracking."
+    },
+    "gottaPostal": {
+      "description": "A free, high-performance SMTP platform dedicated to sending emails, managing marketing campaigns, and running legally compliant phishing awareness tests."
+    }
+  },
+  "experiences": {
+    "clarsi": {
+      "role": "Full Stack Developer React.js / C# .NET",
+      "description": "Development of a React / Next.js web application dedicated to managing the personal accounts of subscribers and members of the French Hiking Federation. Integration of strict data validation with Zod and secure consumption of an API Gateway via Axios. Use of Next.js hybrid rendering strategies to optimize display performance and the initial loading speed of the member area."
+    },
+    "sosit": {
+      "role": "Full Stack Developer C# .NET / Blazor",
+      "description": "Development in Clean Architecture (.NET 10 / EF Core) of a site management application for road transport, including reusable Blazor components, multi-step forms, PDF generation for waybills, and rigorous unit/integration testing."
+    },
+    "gottaphish": {
+      "role": "Full Stack Developer React.js / Node.js",
+      "description": "Contribution to the development and continuous improvement of the GottaPhish cybersecurity platform, dedicated to phishing awareness training and prevention through dynamic, personalized campaigns. Full development and Docker deployment of a web application (GottaPostal), built with Hugo, providing access to an SMTP server. Modernization of the main application's end-to-end test suite using Playwright and Node.js."
+    },
+    "optitmome": {
+      "role": "Webmaster",
+      "description": "Improved customer satisfaction and internal productivity through rigorous needs analysis and smooth communication, achieved by integrating PHP Laravel and WordPress mockups to deliver an improved UX/UI."
+    },
+    "cite": {
+      "role": "Full Stack Developer",
+      "description": "Design and development of a cross-department collaborative tool, working directly with the technical team and the client. This project involved a responsive UI/UX overhaul, the implementation of role-based dynamic views, and the creation of custom components (search engine, modal windows, icon picker), all backed by rigorous version control on Git/GitHub and concluded with the final technical demo presented to the client."
+    }
+  },
+  "educations": {
+    "studi": {
+      "degree": "Bachelor's Degree - Application Designer/Developer",
+      "description": "Advanced training focused on designing robust and secure web architectures with an Angular specialization, relational database management, and full-stack development."
+    },
+    "m2i": {
+      "degree": "Certification - Microsoft Certified Professional Developer (MCPD)",
+      "description": "Intensive professional training in Object-Oriented Programming (OOP) with C# and .NET 10, focused on designing and building robust REST APIs with ASP.NET and Entity Framework Core."
+    },
+    "afpa": {
+      "degree": "Associate Degree - Web and Mobile Web Developer",
+      "description": "Intensive training in web fundamentals, responsive integration, and building dynamic web applications with modern frameworks."
+    },
+    "kokugakuin": {
+      "degree": "Bachelor's Degree, Language Teacher",
+      "description": "In-depth analysis, scientific investigation, and archiving of ancient manuscripts (~2000 years old), combined with the design of custom training programs precisely tailored to learners' specific needs."
+    }
+  },
+  "footer": {
+    "text": "Portfolio • Full Stack Developer"
+  }
+}
