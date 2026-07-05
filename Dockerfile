@@ -26,7 +26,7 @@ COPY nginx/nginx.conf $NGINX_ROOT_PATH/nginx.conf
 COPY nginx/default.conf $NGINX_CONF_PATH/default.conf
 
 # Copy build artifacts from builder
-COPY --from=builder /app/dist $APP_ROOT_PATH
+COPY --from=builder /app/out $APP_ROOT_PATH
 
 # Security hardening
 RUN mkdir -p /tmp/nginx_cache /var/cache/nginx /var/run $NGINX_LOG_PATH \
