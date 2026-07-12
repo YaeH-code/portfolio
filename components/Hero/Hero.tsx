@@ -11,79 +11,38 @@ import enTranslations from "@/locales/en.json";
 export default function Hero() {
   const { lang } = useLanguage();
   const t = lang === "fr" ? frTranslations : enTranslations;
-  const styles = {
-    profile: {
-      maxWidth: "42rem",
-      display: "flex",
-      flexDirection: "column",
-      margin: "auto",
-      paddingTop: "2rem",
-      gap: "1.25rem",
-    },
-    imageWrapper: {
-      width: "100px",
-      height: "100px",
-      borderRadius: "50%",
-      overflow: "hidden",
-      boxShadow: "0 0 0 1px #ffffff14, 0 4px 20px #ffffff0a",
-      display: "inline-block",
-      backgroundColor: "#121212",
-    },
-    image: {
-      objectFit: "cover",
-      width: "100%",
-      height: "100%",
-    },
-    titleText: {
-      fontSize: "3rem",
-      fontWeight: 600,
-      letterSpacing: "1.2px",
-      color: "#f4f4f5",
-      margin: 0,
-    },
-    container: {
-      display: "flex",
-      flexDirection: "column",
-      gap: "2rem",
-      maxWidth: "42rem",
-    },
-    introText: {
-      fontSize: "1rem",
-      color: "#a1a1aa",
-      lineHeight: 1.7,
-      margin: 0,
-    },
-  } as const;
-
   return (
-    <div style={styles.profile}>
+    <div className="max-w-2xl flex flex-col mx-auto pt-8 gap-5">
       <CustomBadge isOpen={true} />
 
       <div className="flex flex-col md:flex-row gap-4 items-center justify-center md:justify-around text-center md:text-left">
-        <h1 style={styles.titleText}>Yae Umehara</h1>
-        <div style={styles.imageWrapper}>
+        <h1 className="text-[3rem] font-semibold tracking-[1.2px] text-zinc-100 m-0">
+          Yae Umehara
+        </h1>
+
+        <div className="w-25 h-25 rounded-full overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_4px_20px_rgba(255,255,255,0.04)] inline-block bg-[#121212]">
           <Image
             src="/images/yae3.jpg"
             alt="Yae Umehara"
             width={100}
             height={100}
-            style={styles.image}
+            className="object-cover w-full h-full"
             priority
           />
         </div>
       </div>
 
-      <div style={styles.container}>
-        <p style={styles.introText}>
+      <div className="flex flex-col gap-8 max-w-2xl">
+        <p className="text-[1rem] text-zinc-400 leading-relaxed m-0">
           {t.hero.introPart1}{" "}
           <span className="font-bold text-white">React, C# .NET</span>{" "}
           {t.hero.introPart2}
         </p>
 
-        <SkillCards></SkillCards>
+        <SkillCards />
       </div>
 
-      <SocialLinks></SocialLinks>
+      <SocialLinks />
     </div>
   );
 }

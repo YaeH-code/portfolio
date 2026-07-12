@@ -5,45 +5,23 @@ import { Mail } from "lucide-react"; // Make sure to install lucide-react if you
 
 export default function SocialLinks() {
   const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
-
-  const styles = {
-    socialContainer: {
-      display: "flex",
-      alignItems: "center",
-      gap: "1rem",
-    },
-    iconLink: (isHovered: boolean): CSSProperties => ({
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      width: "40px",
-      height: "40px",
-      borderRadius: "0.5rem",
-      backgroundColor: isHovered ? "#ffffff0a" : "transparent",
-      color: isHovered ? "#f4f4f5" : "#71717a",
-      border: isHovered ? "1px solid #ffffff14" : "1px solid transparent",
-      transition: "all 0.2s ease-in-out",
-      cursor: "pointer",
-      textDecoration: "none",
-    }),
-    svgIcon: {
-      width: "20px",
-      height: "20px",
-    },
+  const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>): void => {
+    e.preventDefault();
+    const user = "uhm.yae";
+    const domain = "gmail.com";
+    window.open(`mailto:${user}@${domain}`, "_blank");
   };
 
   return (
-    <div style={styles.socialContainer}>
+    <div className="flex items-center gap-4">
       <a
         href="https://github.com/YaeH-code/portfolio"
         target="_blank"
         rel="noreferrer"
-        style={styles.iconLink(hoveredIcon === "github")}
-        onMouseEnter={() => setHoveredIcon("github")}
-        onMouseLeave={() => setHoveredIcon(null)}
+        className="flex items-center justify-center w-10 h-10 rounded-lg bg-transparent text-zinc-500 border border-transparent hover:bg-white/5 hover:text-zinc-100 hover:border-white/10 transition-all duration-200 ease-in-out cursor-pointer no-underline"
         title="GitHub"
       >
-        <svg style={styles.svgIcon} fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -51,17 +29,14 @@ export default function SocialLinks() {
           />
         </svg>
       </a>
-
       <a
-        href="https://www.linkedin.com/in/yae-umehara/?skipRedirect=true"
+        href="https://www.linkedin.com/in/yae-umehara/"
         target="_blank"
         rel="noreferrer"
-        style={styles.iconLink(hoveredIcon === "linkedin")}
-        onMouseEnter={() => setHoveredIcon("linkedin")}
-        onMouseLeave={() => setHoveredIcon(null)}
+        className="flex items-center justify-center w-10 h-10 rounded-lg bg-transparent text-zinc-500 border border-transparent hover:bg-white/5 hover:text-zinc-100 hover:border-white/10 transition-all duration-200 ease-in-out cursor-pointer no-underline"
         title="LinkedIn"
       >
-        <svg style={styles.svgIcon} fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -69,12 +44,9 @@ export default function SocialLinks() {
           />
         </svg>
       </a>
-
       <a
-        href="mailto:uhm.yae@gmail.com"
-        style={styles.iconLink(hoveredIcon === "email")}
-        onMouseEnter={() => setHoveredIcon("email")}
-        onMouseLeave={() => setHoveredIcon(null)}
+        onClick={handleEmailClick}
+        className="flex items-center justify-center w-10 h-10 rounded-lg bg-transparent text-zinc-500 border border-transparent hover:bg-white/5 hover:text-zinc-100 hover:border-white/10 transition-all duration-200 ease-in-out cursor-pointer no-underline"
         title="Email"
       >
         <Mail size={20} />
