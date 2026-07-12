@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { CSSProperties, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export interface TimelineItem {
   title?: string;
@@ -46,178 +46,77 @@ export default function TimelineSection({
     return () => observer.disconnect();
   }, []);
 
-  const styles = {
-    section: {
-      display: "flex",
-      flexDirection: "column",
-      gap: "1.5rem",
-      scrollMarginTop: "8rem",
-    },
-    heading: {
-      fontSize: "0.75rem",
-      fontWeight: 600,
-      textTransform: "uppercase",
-      letterSpacing: "0.1em",
-      color: "#71717a",
-      margin: 0,
-      paddingBottom: "10px",
-      borderBottom: "1px solid #ffffff1a",
-    },
-    listContainer: {
-      display: "flex",
-      flexDirection: "column",
-      gap: "0.75rem",
-    },
-    card: {
-      padding: "1.25rem",
-      backgroundColor: "#121212",
-      borderRadius: "0.75rem",
-      border: "1px solid #18181b",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "flex-start",
-      gap: "1rem",
-      opacity: 0,
-    } as CSSProperties,
-    contentStack: {
-      display: "flex",
-      flexDirection: "column",
-      gap: "0.25rem",
-    },
-    cardHeading: {
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "start",
-      gap: "1rem",
-    },
-    itemIcon: {
-      display: "inline-flex",
-      alignItems: "center",
-      justifyContent: "center",
-      overflow: "hidden",
-      borderRadius: "3px",
-      width: "24px",
-      height: "24px",
-      flexShrink: 0,
-    },
-    itemTitle: {
-      fontSize: "0.875rem",
-      fontWeight: 500,
-      color: "#f4f4f5",
-      margin: 0,
-    },
-    itemSubtitle: {
-      color: "#a1a1aa",
-      fontSize: "0.75rem",
-      fontWeight: 500,
-      margin: 0,
-    },
-    tagContainer: {
-      display: "flex",
-      flexWrap: "wrap" as const,
-      gap: "0.25rem",
-      padding: "0.5rem 1.25rem 0.5rem 1.25rem",
-    },
-    tag: {
-      fontSize: "10px",
-      fontFamily: "monospace",
-      padding: "0.1rem 0.5rem",
-      backgroundColor: "#09090b",
-      color: "#a1a1aa",
-      borderRadius: "0.25rem",
-      border: "1px solid rgba(39, 39, 42, 0.4)",
-    },
-    descriptionText: {
-      fontSize: "0.75rem",
-      color: "#71717a",
-      paddingTop: "0.5rem",
-      paddingInline: "0.5rem",
-      lineHeight: 1.625,
-      margin: 0,
-    },
-    periodBadge: {
-      fontSize: "11px",
-      fontFamily: "monospace",
-      color: "#71717a",
-      flexShrink: 0,
-      backgroundColor: "rgba(24, 24, 27, 0.6)",
-      padding: "0.25rem 0.625rem",
-      borderRadius: "0.25rem",
-      border: "1px solid rgba(39, 39, 42, 0.5)",
-    },
-  } as const;
-
   return (
-    <>
-      <style>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(15px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+    <section id={id} className="flex flex-col gap-6 scroll-mt-32">
+      <h2 className="text-[0.75rem] font-semibold uppercase tracking-widest text-zinc-500 m-0 pb-2.5 border-b border-white/10">
+        {sectionTitle}
+      </h2>
 
-      <section id={id} style={styles.section}>
-        <h2 style={styles.heading}>{sectionTitle}</h2>
+      <div ref={containerRef} className="flex flex-col gap-3">
+        {items.map((item, index) => (
+          <div
+            key={index}
+            className={`p-5 bg-[#121212] rounded-xl border border-[#18181b] flex flex-col items-start gap-4 
+              transition-all duration-900 ease-in-out transform-gpu ${
+                isIntersecting
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+            style={{
+              transitionDelay: isIntersecting ? `${index * 180}ms` : "0ms",
+            }}
+          >
+            <div className="flex flex-col gap-1 w-full">
+              {/* En-tête de la carte */}
+              <div className="flex flex-row items-center justify-start gap-4 flex-wrap sm:flex-nowrap">
+                <span className="inline-flex items-center justify-center overflow-hidden rounded-[3px] w-6 h-6 shrink-0">
+                  {item.icon && item.icon.trim() !== "" ? (
+                    <Image
+                      src={item.icon}
+                      alt={`${item.subtitle} logo`}
+                      width={24}
+                      height={24}
+                      unoptimized
+                    />
+                  ) : (
+                    <div className="w-6 h-6 bg-zinc-800 rounded-[10px]" />
+                  )}
+                </span>
 
-        <div ref={containerRef} style={styles.listContainer}>
-          {items.map((item, index) => (
-            <div
-              key={index}
-              style={{
-                ...styles.card,
-                animationName: isIntersecting ? "fadeInUp" : "none",
-                animationDuration: "1.5s",
-                animationTimingFunction: "ease-in-out",
-                animationFillMode: "forwards",
-                animationDelay: isIntersecting ? `${index * 150}ms` : "0ms",
-              }}
-            >
-              <div style={styles.contentStack}>
-                <div style={styles.cardHeading}>
-                  <span style={styles.itemIcon}>
-                    {item.icon && item.icon.trim() !== "" ? (
-                      <Image
-                        src={item.icon}
-                        alt={`${item.subtitle} logo`}
-                        width={24}
-                        height={24}
-                        unoptimized
-                      />
-                    ) : (
-                      <div
-                        style={{
-                          width: 24,
-                          height: 24,
-                          backgroundColor: "#27272a",
-                          borderRadius: "10px",
-                        }}
-                      />
-                    )}
-                  </span>
-                  <h3 style={styles.itemTitle}>{item.title}</h3>
-                  <span style={styles.periodBadge}>{item.period}</span>
-                </div>
-                <p style={styles.itemSubtitle}>{item.subtitle}</p>
-                <div style={styles.tagContainer}>
-                  {item.tags.map((tag, tIdx) => (
-                    <span key={tIdx} style={styles.tag}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <p style={styles.descriptionText}>{item.description}</p>
+                <h3 className="text-[0.875rem] font-medium text-[#f4f4f5] m-0 mr-auto">
+                  {item.title}
+                </h3>
+
+                <span className="text-[11px] font-mono text-zinc-500 shrink-0 bg-zinc-900/60 px-2.5 py-1 rounded border border-zinc-800/50">
+                  {item.period}
+                </span>
               </div>
+
+              {/* Sous-titre */}
+              <p className="text-zinc-400 text-[0.75rem] font-medium m-0 mt-1">
+                {item.subtitle}
+              </p>
+
+              {/* Conteneur de Badges / Tags */}
+              <div className="flex flex-wrap gap-1 py-2 px-2">
+                {item.tags.map((tag, tIdx) => (
+                  <span
+                    key={tIdx}
+                    className="text-[10px] font-mono px-2 py-0.5 bg-[#09090b] text-zinc-400 rounded border border-zinc-800/40"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* Description */}
+              <p className="text-[0.75rem] text-zinc-500 pt-2 px-2 leading-[1.7] m-0">
+                {item.description}
+              </p>
             </div>
-          ))}
-        </div>
-      </section>
-    </>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }

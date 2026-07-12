@@ -1,10 +1,8 @@
 "use client";
 
-import { useState, CSSProperties } from "react";
 import { Mail } from "lucide-react"; // Make sure to install lucide-react if you haven't
 
 export default function SocialLinks() {
-  const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
   const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>): void => {
     e.preventDefault();
     const user = "uhm.yae";

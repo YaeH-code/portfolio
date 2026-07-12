@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
@@ -8,8 +7,6 @@ import frTranslations from "@/locales/fr.json";
 import enTranslations from "@/locales/en.json";
 
 export default function Navbar() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   const { lang, toggleLang } = useLanguage();
   const t = lang === "fr" ? frTranslations : enTranslations;
 

@@ -93,12 +93,12 @@ export default function Educations() {
     tags: form.tags,
   }));
   return (
-    <main>
+    <div>
       <TimelineSection
         id="educations"
         sectionTitle="Formations"
         items={formattedFormations}
       />
-    </main>
+    </div>
   );
 }
