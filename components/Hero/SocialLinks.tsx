@@ -35,7 +35,7 @@ export default function SocialLinks() {
   return (
     <div style={styles.socialContainer}>
       <a
-        href="https://github.com/YaeH-code"
+        href="https://github.com/YaeH-code/portfolio"
         target="_blank"
         rel="noreferrer"
         style={styles.iconLink(hoveredIcon === "github")}

@@ -20,21 +20,6 @@ interface Project {
 
 const PROJECTS: Project[] = [
   {
-    key: "eminaCoiffure",
-    title: "Emina Coiffure",
-    tags: [
-      "React.js",
-      "TypeScript",
-      "Vite",
-      "Firebase",
-      "Cloudflare",
-      "Resend",
-    ],
-    liveLink: "https://eminacoiffure.fr",
-    githubLink: "https://github.com/YaeH-code/emina-hairsalon",
-    image: "/images/site-eminacoiffure.png",
-  },
-  {
     key: "innovEvents",
     title: "Innov'Events",
     tags: [
@@ -53,11 +38,26 @@ const PROJECTS: Project[] = [
     image: "/images/site-innovevent.png",
   },
   {
+    key: "eminaCoiffure",
+    title: "Emina Coiffure",
+    tags: [
+      "React.js",
+      "TypeScript",
+      "Vite",
+      "Firebase",
+      "Cloudflare",
+      "Resend",
+    ],
+    liveLink: "https://eminacoiffure.fr",
+    githubLink: "https://github.com/YaeH-code/eminacoiffure-presentation",
+    image: "/images/site-eminacoiffure.png",
+  },
+  {
     key: "gottaPostal",
     title: "GottaPostal",
     tags: ["Hugo", "Go", "CloudFlare", "Docker", "HTML", "CSS", "JavaScript"],
     liveLink: "https://gottapostal.gottaphish.com/",
-    githubLink: "https://github.com/YaeH-code/GottaPostal",
+    githubLink: "https://github.com/YaeH-code/gottapostal-presentation",
     image: "/images/site-gottapostal.png",
   },
 ];
