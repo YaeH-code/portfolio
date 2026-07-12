@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, CSSProperties } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
@@ -15,25 +15,11 @@ interface Project {
   liveLink: string;
   githubLink?: string;
   subGithubLink?: string;
+  tag?: string;
   image: string;
 }
 
 const PROJECTS: Project[] = [
-  {
-    key: "eminaCoiffure",
-    title: "Emina Coiffure",
-    tags: [
-      "React.js",
-      "TypeScript",
-      "Vite",
-      "Firebase",
-      "Cloudflare",
-      "Resend",
-    ],
-    liveLink: "https://eminacoiffure.fr",
-    githubLink: "https://github.com/YaeH-code/emina-hairsalon",
-    image: "/images/site-eminacoiffure.png",
-  },
   {
     key: "innovEvents",
     title: "Innov'Events",
@@ -49,170 +35,102 @@ const PROJECTS: Project[] = [
     ],
     liveLink: "https://innovevent.occy.ovh/",
     githubLink: "https://github.com/YaeH-code/InnovEvents.API",
+    tag: "Innov'Event API",
     subGithubLink: "https://github.com/YaeH-code/InnovEvents.Client",
     image: "/images/site-innovevent.png",
   },
   {
+    key: "eminaCoiffure",
+    title: "Emina Coiffure",
+    tags: [
+      "React.js",
+      "TypeScript",
+      "Vite",
+      "Firebase",
+      "Cloudflare",
+      "Resend",
+    ],
+    liveLink: "https://eminacoiffure.fr",
+    githubLink: "https://github.com/YaeH-code/eminacoiffure-presentation",
+    tag: "GitHub vitrine – Emina Coiffure",
+    image: "/images/site-eminacoiffure.png",
+  },
+  {
     key: "gottaPostal",
     title: "GottaPostal",
-    tags: ["Hugo", "Go", "CloudFlare", "Docker", "HTML", "CSS", "JavaScript"],
+    tags: [
+      "Hugo",
+      "Go",
+      "Template",
+      "CloudFlare",
+      "Docker",
+      "HTML",
+      "CSS",
+      "JavaScript",
+    ],
     liveLink: "https://gottapostal.gottaphish.com/",
-    githubLink: "https://github.com/YaeH-code/GottaPostal",
+    githubLink: "https://github.com/YaeH-code/gottapostal-presentation",
+    tag: "GitHub vitrine – GottaPostal",
     image: "/images/site-gottapostal.png",
   },
 ];
-
-const styles = {
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-    gap: "1.25rem",
-  },
-  card: (isHovered: boolean): CSSProperties => ({
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    backgroundColor: isHovered ? "#161618" : "#121212",
-    borderRadius: "0.75rem",
-    border: isHovered ? "1px solid #3f3f46" : "1px solid #18181b",
-    transform: isHovered ? "translateY(-6px)" : "translateY(0px)",
-    boxShadow: isHovered
-      ? "0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px 1px rgba(63, 63, 70, 0.15)"
-      : "0 4px 6px -1px rgba(0, 0, 0, 0.3)",
-    transition: "all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)",
-    overflow: "hidden",
-  }),
-  imageContainer: {
-    width: "100%",
-    height: "180px",
-    position: "relative" as const,
-    overflow: "hidden" as const,
-    borderTopLeftRadius: "0.75rem",
-    borderTopRightRadius: "0.75rem",
-    backgroundColor: "#1a1a1a",
-  },
-  projectImg: (isHovered: boolean) =>
-    ({
-      objectFit: "cover",
-      width: "100%",
-      height: "100%",
-      transform: isHovered ? "scale(1.04)" : "scale(1)",
-      filter: isHovered ? "brightness(1.0)" : "brightness(0.9)",
-      transition: "transform 0.5s ease, filter 0.5s ease",
-    }) as const,
-  cardContent: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "0.75rem",
-    padding: "1.25rem 1.25rem 0 1.25rem",
-    flex: 1,
-  },
-  cardHeader: {
-    display: "flex",
-    justifyContent: "space-between" as const,
-    alignItems: "flex-start" as const,
-    gap: "0.5rem",
-  },
-  title: {
-    fontSize: "0.875rem",
-    fontWeight: 600,
-    color: "#f4f4f5",
-    margin: 0,
-  } as const,
-  actions: {
-    display: "flex",
-    gap: "0.625rem",
-    color: "#71717a",
-    flexShrink: 0,
-  },
-  iconLink: (isIconHovered: boolean) => ({
-    color: isIconHovered ? "#f4f4f5" : "inherit",
-    transform: isIconHovered ? "scale(1.1)" : "scale(1)",
-    transition: "all 0.15s ease",
-    display: "inline-flex",
-    alignItems: "center",
-  }),
-  svgIcon: {
-    width: "1.25rem",
-    height: "1.25rem",
-  },
-  description: {
-    fontSize: "0.75rem",
-    color: "#a1a1aa",
-    lineHeight: 1.625,
-    margin: 0,
-  },
-  tagContainer: {
-    display: "flex",
-    flexWrap: "wrap" as const,
-    gap: "0.25rem",
-    padding: "1rem 1.25rem 1.25rem 1.25rem",
-  },
-  tag: {
-    fontSize: "10px",
-    fontFamily: "monospace",
-    padding: "0.125rem 0.5rem",
-    backgroundColor: "#09090b",
-    color: "#a1a1aa",
-    borderRadius: "0.25rem",
-    border: "1px solid rgba(39, 39, 42, 0.4)",
-  },
-} as const;
 
 export default function ProjectCards() {
   const { lang } = useLanguage();
   const t = lang === "fr" ? frTranslations : enTranslations;
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [hoveredIcon, setHoveredIcon] = useState<{
-    cardIdx: number;
-    type: "github" | "subgithub" | "live";
-  } | null>(null);
 
   return (
-    <div style={styles.grid}>
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-5">
       {PROJECTS.map((project, index) => {
         const isCardHovered = hoveredCard === index;
 
         return (
           <div
             key={index}
-            style={styles.card(isCardHovered)}
+            className={`flex flex-col justify-between rounded-xl overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] group ${
+              isCardHovered
+                ? "bg-[#161618] border border-[#3f3f46] -translate-y-1.5"
+                : "bg-[#121212] border border-[#18181b] translate-y-0"
+            }`}
             onMouseEnter={() => setHoveredCard(index)}
             onMouseLeave={() => setHoveredCard(null)}
           >
             <Link href={project.liveLink}>
-              <div style={styles.imageContainer} title={project.title}>
+              <div
+                className="w-full h-[180px] relative overflow-hidden rounded-t-xl bg-[#1a1a1a]"
+                title={project.title}
+              >
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  style={styles.projectImg(isCardHovered)}
+                  className={`object-cover w-full h-full transition-all duration-500 ease-in-out ${
+                    isCardHovered
+                      ? "scale-[1.04] brightness-100"
+                      : "scale-100 brightness-90"
+                  }`}
                   priority={index === 0}
                 />
               </div>
             </Link>
-
-            <div style={styles.cardContent}>
-              <div style={styles.cardHeader}>
-                <h3 style={styles.title}>{project.title}</h3>
-                <div style={styles.actions}>
+            <div className="flex flex-col gap-3 p-5 pb-0 flex-1">
+              <div className="flex justify-between items-start gap-2">
+                <h3 className="text-[0.875rem] font-semibold text-[#f4f4f5] m-0">
+                  {project.title}
+                </h3>
+                <div className="flex gap-2.5 text-zinc-500 shrink-0">
                   {project.githubLink && (
                     <a
                       href={project.githubLink}
                       target="_blank"
+                      title={project.tag}
                       rel="noreferrer"
-                      style={styles.iconLink(
-                        hoveredIcon?.cardIdx === index &&
-                          hoveredIcon?.type === "github",
-                      )}
-                      onMouseEnter={() =>
-                        setHoveredIcon({ cardIdx: index, type: "github" })
-                      }
-                      onMouseLeave={() => setHoveredIcon(null)}
+                      className="inline-flex items-center hover:text-[#f4f4f5] hover:scale-110 transition-all duration-150 ease-in-out"
                     >
                       <svg
-                        style={styles.svgIcon}
+                        className="w-5 h-5"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
@@ -229,18 +147,12 @@ export default function ProjectCards() {
                     <a
                       href={project.subGithubLink}
                       target="_blank"
+                      title="Innov'Event Client"
                       rel="noreferrer"
-                      style={styles.iconLink(
-                        hoveredIcon?.cardIdx === index &&
-                          hoveredIcon?.type === "subgithub",
-                      )}
-                      onMouseEnter={() =>
-                        setHoveredIcon({ cardIdx: index, type: "subgithub" })
-                      }
-                      onMouseLeave={() => setHoveredIcon(null)}
+                      className="inline-flex items-center hover:text-[#f4f4f5] hover:scale-110 transition-all duration-150 ease-in-out"
                     >
                       <svg
-                        style={styles.svgIcon}
+                        className="w-5 h-5"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
@@ -257,27 +169,23 @@ export default function ProjectCards() {
                     href={project.liveLink}
                     target="_blank"
                     rel="noreferrer"
-                    style={styles.iconLink(
-                      hoveredIcon?.cardIdx === index &&
-                        hoveredIcon?.type === "live",
-                    )}
-                    onMouseEnter={() =>
-                      setHoveredIcon({ cardIdx: index, type: "live" })
-                    }
-                    onMouseLeave={() => setHoveredIcon(null)}
+                    className="inline-flex items-center hover:text-[#f4f4f5] hover:scale-110 transition-all duration-150 ease-in-out"
                   >
                     <ExternalLink size={16} />
                   </a>
                 </div>
               </div>
-              <p style={styles.description}>
+              <p className="text-[0.75rem] text-zinc-400 leading-[1.7] m-0">
                 {t.projects[project.key].description}
               </p>
             </div>
 
-            <div style={styles.tagContainer}>
+            <div className="flex flex-wrap gap-1 p-5 pt-4">
               {project.tags.map((tag, tIdx) => (
-                <span key={tIdx} style={styles.tag}>
+                <span
+                  key={tIdx}
+                  className="text-[10px] font-mono px-2 py-0.5 bg-[#09090b] text-zinc-400 rounded border border-zinc-800/40"
+                >
                   {tag}
                 </span>
               ))}

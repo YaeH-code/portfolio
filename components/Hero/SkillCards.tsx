@@ -16,92 +16,39 @@ export default function SkillsGrid() {
     { title: t.skills.softSkillsTitle, items: t.skills.softItems },
   ];
 
-  const styles = {
-    grid: {
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-      gap: "1.5rem",
-      width: "100%",
-    },
-    card: {
-      padding: "1.25rem",
-      backgroundColor: "#121212",
-      borderRadius: "1rem",
-      border: "1px solid #18181b",
-      animation: "fadeInUp 0.6s ease forwards",
-      opacity: 0,
-    },
-    cardTitle: {
-      fontSize: "1rem",
-      fontWeight: 600,
-      color: "#f4f4f5",
-      margin: "0 0 1rem 0",
-    },
-    list: {
-      display: "flex",
-      flexDirection: "column",
-      gap: "0.5rem",
-      padding: 0,
-      margin: 0,
-      listStyleType: "none",
-    },
-    listItem: {
-      fontSize: "0.8rem",
-      color: "#a1a1aa",
-      display: "flex",
-      alignItems: "flex-start",
-      animation: "fadeInUp 0.4s ease forwards",
-      opacity: 0,
-    },
-  } as const;
-
   return (
-    <>
-      <style>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6 w-full">
+      {SKILLS_DATA.map((card, cardIdx) => (
+        <div
+          key={cardIdx}
+          className="p-5 bg-[#121212] rounded-2xl border border-zinc-900 opacity-0 animate-[fadeInUp_0.8s_ease_forwards]"
+          style={{
+            animationDelay: `${cardIdx * 0.15}s`,
+          }}
+        >
+          <p className="text-[1rem] font-semibold text-zinc-100 m-0 mb-4">
+            {card.title}
+          </p>
 
-      <div style={styles.grid}>
-        {SKILLS_DATA.map((card, cardIdx) => (
-          <div
-            key={cardIdx}
-            style={{
-              ...styles.card,
-              animationDelay: `${cardIdx * 0.15}s`,
-            }}
-          >
-            <p style={styles.cardTitle}>{card.title}</p>
-            <ul style={styles.list}>
-              {card.items.map((item, itemIdx) => {
-                // Calculates a progressive delay for each individual item across both cards
-                const globalIndex = cardIdx * 4 + itemIdx;
+          <ul className="flex flex-col gap-2 p-0 m-0 list-none">
+            {card.items.map((item, itemIdx) => {
+              const globalIndex = cardIdx * 4 + itemIdx;
 
-                return (
-                  <li
-                    key={itemIdx}
-                    style={{
-                      ...styles.listItem,
-                      // Staggers each item by 0.08 seconds
-                      animationDelay: `${0.2 + globalIndex * 0.08}s`,
-                    }}
-                  >
-                    {item}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </>
+              return (
+                <li
+                  key={itemIdx}
+                  className="text-[0.9rem] text-zinc-400 flex items-start opacity-0 animate-[fadeInUp_0.6s_ease_forwards]"
+                  style={{
+                    animationDelay: `${0.2 + globalIndex * 0.08}s`,
+                  }}
+                >
+                  {item}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ))}
+    </div>
   );
 }

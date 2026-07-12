@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
@@ -8,8 +7,6 @@ import frTranslations from "@/locales/fr.json";
 import enTranslations from "@/locales/en.json";
 
 export default function Navbar() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   const { lang, toggleLang } = useLanguage();
   const t = lang === "fr" ? frTranslations : enTranslations;
 
@@ -19,88 +16,34 @@ export default function Navbar() {
     { label: t.navbar.educations, href: "#educations" },
   ];
 
-  const styles = {
-    navbar: {
-      position: "fixed",
-      top: 0,
-      left: 0,
-      right: 0,
-      zIndex: 50,
-      backdropFilter: "blur(12px)",
-      WebkitBackdropFilter: "blur(12px)",
-      backgroundColor: "#0a0a0ab3",
-      borderBottom: "1px solid #ffffff1a",
-    },
-    container: {
-      maxWidth: "56rem",
-      marginLeft: "auto",
-      marginRight: "auto",
-      paddingLeft: "1.5rem",
-      paddingRight: "1.5rem",
-      height: "100px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-    },
-    logo: {
-      width: "55px",
-      height: "55px",
-    },
-    navLinks: {
-      display: "flex",
-      gap: "1.5rem",
-      fontSize: "0.8rem",
-      fontWeight: 500,
-    },
-    link: (isHovered: boolean) => ({
-      color: isHovered ? "#ffffff" : "#a1a1aa",
-      textDecoration: "none",
-      transition: "all 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
-      transform: isHovered ? "translateY(-1px)" : "translateY(0)",
-    }),
-  } as const;
-
   return (
-    <nav style={styles.navbar}>
-      <div style={styles.container}>
-        <Link
-          href="/"
-          className="no-underline inline-block"
-          style={{ width: 60, height: 60 }}
-        >
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-neutral-950/70 border-b border-white/10">
+      <div className="max-w-4xl mx-auto px-6 h-25 flex items-center justify-between">
+        <Link href="/" className="no-underline inline-block w-15 h-15">
           <Image
             src="/images/logo.png"
             alt="Image de l'accueil"
             width={60}
             height={60}
-            style={styles.logo}
+            className="w-[55px] h-[55px]"
             priority
           />
         </Link>
-        <div style={styles.navLinks}>
-          {links.map((link, index) => (
+
+        <div className="flex gap-6 text-[0.8rem] font-medium">
+          {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              style={styles.link(hoveredIndex === index)}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
+              className="no-underline text-zinc-400 hover:text-white transition-all duration-250 ease-out hover:-translate-y-0.5"
             >
               {link.label}
             </Link>
           ))}
+
           <button
             onClick={toggleLang}
-            style={{
-              padding: "0.25rem 0.625rem",
-              fontSize: "0.75rem",
-              fontWeight: 600,
-              color: "#a1a1aa",
-              backgroundColor: "transparent",
-              border: "1px solid #ffffff1a",
-              borderRadius: "0.375rem",
-              cursor: "pointer",
-            }}
+            className="px-2.5 py-1 text-[0.75rem] font-semibold text-zinc-400 bg-transparent border border-white/10 rounded-md cursor-pointer hover:border-white/30 hover:text-white transition-colors"
           >
             {lang === "fr" ? "EN" : "FR"}
           </button>
