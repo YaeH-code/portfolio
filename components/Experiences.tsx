@@ -1,6 +1,5 @@
 "use client";
 
-import { CSSProperties } from "react";
 import TimelineSection, { TimelineItem } from "./Shared/TimelineSection";
 import { useLanguage } from "@/context/LanguageContext";
 import frTranslations from "@/locales/fr.json";
@@ -80,95 +79,13 @@ export default function Experiences() {
     description: t.experiences[exp.key].description,
     tags: exp.tags,
   }));
-  const styles = {
-    section: {
-      display: "flex",
-      flexDirection: "column",
-      gap: "1.5rem",
-    },
-    heading: {
-      fontSize: "0.75rem",
-      fontWeight: 600,
-      textTransform: "uppercase",
-      letterSpacing: "0.1em",
-      color: "#71717a",
-      margin: 0,
-    },
-    listContainer: {
-      display: "flex",
-      flexDirection: "column",
-      gap: "0.75rem",
-    },
-    card: {
-      padding: "1.25rem",
-      backgroundColor: "#121212",
-      borderRadius: "0.75rem",
-      border: "1px solid #18181b",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "flex-start",
-      gap: "1rem",
-    } as CSSProperties,
-    contentStack: {
-      display: "flex",
-      flexDirection: "column",
-      gap: "0.25rem",
-    },
-    cardHeading: {
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "start",
-      gap: "1rem",
-    },
-    companyIcon: {
-      display: "inline-flex",
-      alignItems: "center",
-      justifyContent: "center",
-      overflow: "hidden",
-      borderRadius: "3px",
-      width: "24px",
-      height: "24px",
-    },
-    roleTitle: {
-      fontSize: "0.875rem",
-      fontWeight: 500,
-      color: "#f4f4f5",
-      margin: 0,
-    },
-    companyName: {
-      color: "#a1a1aa",
-      fontSize: "0.75rem",
-      fontWeight: 500,
-      margin: 0,
-    },
-    descriptionText: {
-      fontSize: "0.75rem",
-      color: "#71717a",
-      paddingTop: "0.5rem",
-      maxWidth: "36rem",
-      lineHeight: 1.625,
-      margin: 0,
-    },
-    periodBadge: {
-      fontSize: "11px",
-      fontFamily: "monospace",
-      color: "#71717a",
-      flexShrink: 0,
-      backgroundColor: "rgba(24, 24, 27, 0.6)",
-      padding: "0.25rem 0.625rem",
-      borderRadius: "0.25rem",
-      border: "1px solid rgba(39, 39, 42, 0.5)",
-    },
-  } as const;
-
   return (
-    <section id="experience" style={styles.section}>
+    <div id="experience">
       <TimelineSection
         id="experiences"
         sectionTitle="Expériences"
         items={formattedExperiences}
       />
-    </section>
+    </div>
   );
 }

@@ -1,4 +1,3 @@
-import { CSSProperties } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import frTranslations from "@/locales/fr.json";
 import enTranslations from "@/locales/en.json";

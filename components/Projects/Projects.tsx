@@ -8,29 +8,26 @@ import enTranslations from "@/locales/en.json";
 export default function Projects() {
   const { lang } = useLanguage();
   const t = lang === "fr" ? frTranslations : enTranslations;
-  const styles = {
-    section: {
-      display: "flex",
-      flexDirection: "column",
-      gap: "1.5rem",
-      scrollMarginTop: "8rem",
-    },
-    heading: {
-      fontSize: "0.75rem",
-      fontWeight: 600,
-      textTransform: "uppercase",
-      letterSpacing: "0.1em",
-      color: "#71717a",
-      margin: 0,
-      paddingBottom: "10px",
-      borderBottom: "1px solid #ffffff1a",
-    },
-  } as const;
-
   return (
-    <section id="works" style={styles.section}>
-      <h2 style={styles.heading}>{t.projects.heading}</h2>
-      <ProjectCards />
-    </section>
+    <>
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(15px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+      <section id="works" className="flex flex-col gap-6 scroll-mt-32">
+        <h2 className="text-[0.8rem] font-semibold uppercase tracking-widest text-zinc-500 m-0 pb-[10px] border-b border-white/10">
+          {t.projects.heading}
+        </h2>
+        <ProjectCards />
+      </section>
+    </>
   );
 }
