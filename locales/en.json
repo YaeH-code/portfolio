@@ -16,40 +16,43 @@
     "technicalTitle": "💻 Technical Expertise",
     "softSkillsTitle": "✨ Soft Skills",
     "technicalItems": [
-      "Object-Oriented Programming (OOP)",
-      "C# .NET, Java, PHP, TypeScript",
-      "React, Angular, Next, Laravel",
-      "HTML5, CSS3, JavaScript",
-      "SQL, PostgreSQL, NoSQL",
-      "(Development of dynamic features, API integration)"
+      "Languages: TypeScript, C#, SQL, HTML5, CSS3 / SCSS, JavaScript, PHP, Java",
+      "Front-End & Mobile Frameworks: Angular (v17–21), Capacitor, React, Next.js, Blazor, Vite, Hugo",
+      "Back-End Frameworks & Architecture: .NET (up to .NET 10), ASP.NET Core, Clean Architecture, Result Pattern, Laravel",
+      "Databases & BaaS: Entity Framework Core (EF Core), Firebase (Firestore & security rules), PostgreSQL, MySQL, NoSQL",
+      "DevOps, Cloud & Quality: Git, Docker, CI/CD pipelines, Cloudflare (Pages, DNS), Resend API, Playwright E2E testing, unit & integration testing, Agile"
     ],
     "softItems": [
-      "Fast adaptability",
-      "Constant technological curiosity",
-      "Rigor and organizational skills",
-      "Commitment & team spirit"
+      "Autonomy and rigor in production environments",
+      "High standards for code reliability, security, and maintainability",
+      "Fast adaptability and Agile collaboration",
+      "Continuous technical curiosity and strong organizational skills"
     ]
   },
   "projects": {
     "heading": "Projects",
     "eminaCoiffure": {
-      "description": "An elegant React.js application powering a real hair salon specialized in face-shape styling, combining a digital showcase with smart booking and custom time-slot blocking depending on the service chosen."
+      "description": "Online booking web application (React / Vite SPA, Mobile-First) and brand showcase for a hairdressing and beauty salon specializing in 100% natural treatments. BaaS architecture powered by Firebase (Firestore with strict security rules to isolate client bookings), automated confirmation emails via the Resend API, continuous deployment (CI/CD), DNS, and DDoS protection via Cloudflare Pages."
     },
     "innovEvents": {
-      "description": "A containerized client-server solution (Web and API in Docker) centralizing an agency's event management through a reliable CRM, automatic PDF quote generation, and collaborative task tracking."
+      "description": "A containerized client-server solution (Docker Web and API) centralizing an agency's event management through a reliable CRM, automated PDF quote generation, and collaborative task tracking."
     },
     "gottaPostal": {
-      "description": "A free, high-performance SMTP platform dedicated to sending emails, managing marketing campaigns, and running legally compliant phishing awareness tests."
+      "description": "A high-performance web application built with React and Hugo, fully containerized with Docker and deployed via Cloudflare, providing secure access to an SMTP server dedicated to sending emails, managing campaigns, and conducting authorized phishing awareness simulations."
     }
   },
   "experiences": {
     "clarsi": {
-      "role": "Full Stack Developer React.js / C# .NET",
-      "description": "Development of a React / Next.js web application dedicated to managing the personal accounts of subscribers and members of the French Hiking Federation. Integration of strict data validation with Zod and secure consumption of an API Gateway via Axios. Use of Next.js hybrid rendering strategies to optimize display performance and the initial loading speed of the member area."
+      "role": "FullStack C# / React.js Developer",
+      "description": "Contributed to the development of the FFRandonnée solution (ASP.NET Core API & React Next.js Client) dedicated to subscribers and members of the French Hiking Federation. Front-End development in React and Next.js from mockups, focusing on rendering performance, hybrid rendering, and a seamless user experience. Data modeling and creation of HTTP services in ASP.NET Core for secure REST API integration and consumption. Implementation of multi-step forms secured with strict Zod validation, fine-grained role-based access control, and collaboration within an Agile team."
     },
     "sosit": {
-      "role": "Full Stack Developer C# .NET / Blazor",
-      "description": "Development in Clean Architecture (.NET 10 / EF Core) of a site management application for road transport, including reusable Blazor components, multi-step forms, PDF generation for waybills, and rigorous unit/integration testing."
+      "role": "FullStack Web & Mobile Developer",
+      "description": "Designed and developed a SaaS solution in the Transport & Logistics sector across two major versions. On V2 (Web & Mobile SaaS): cross-platform development on a shared codebase using Angular and Capacitor, creation of reusable UI components (HTML5/SCSS), secure REST API integration in a multi-tenant context, and active contribution to CI/CD pipelines and containerized Docker builds. On V1 (Construction Site Management - .NET 10): data modeling, EF Core migrations within a Clean Architecture, C# services implementing the Result Pattern, Blazor interfaces, multi-step forms, automated PDF generation (waybills/consignment notes), and rigorous unit and integration testing."
+    },
+    "eminaCoiffure": {
+      "role": "FullStack Developer (Design, Deployment & SEO)",
+      "description": "End-to-end design and development of an online booking web application (React / Vite, Mobile-First approach) and brand showcase for a real hair salon in Lille (live client project in production). Backend-as-a-Service architecture powered by Firebase (Firestore with strict security rules to protect client data), smart time-slot blocking based on the selected service, automated email confirmations via the Resend API, continuous deployment (CI/CD), DNS configuration and security via Cloudflare Pages, as well as search indexing and local SEO monitoring (Google Search Console)."
     },
     "gottaphish": {
       "role": "Full Stack Developer React.js / Node.js",

@@ -6,7 +6,13 @@ import frTranslations from "@/locales/fr.json";
 import enTranslations from "@/locales/en.json";
 
 interface Experience {
-  key: "clarsi" | "sosit" | "gottaphish" | "optitmome" | "cite";
+  key:
+    | "sosit"
+    | "eminaCoiffure"
+    | "clarsi"
+    | "gottaphish"
+    | "optitmome"
+    | "cite";
   role: string;
   icon: string;
   company: string;
@@ -16,20 +22,54 @@ interface Experience {
 
 const EXPERIENCES: Experience[] = [
   {
-    key: "clarsi",
-    role: "Développeur Full Stack React.js / C# .NET",
-    icon: "/images/logos/clarsi.jpg",
-    company: "Clarsi",
-    period: "2026 — Present",
-    tags: ["React.js", "Next.Js", "TypeScript", "Tailwind", "SqlServer", "Git"],
-  },
-  {
     key: "sosit",
-    role: "Développeur Full Stack C# .NET / Blazor",
+    role: "Développeuse FullStack Web & Mobile",
     icon: "/images/logos/sas.jpeg",
     company: "Sos - IT",
-    period: "2026",
-    tags: ["C#", ".NET", "Blazor", "XUnit", "Docker", "Git"],
+    period: "Nov. 2025 — Présent",
+    tags: [
+      "Angular",
+      "Capacitor",
+      "TypeScript",
+      "C#",
+      ".NET 10",
+      "EF Core",
+      "Blazor",
+      "Docker",
+      "Kubernetes",
+    ],
+  },
+  {
+    key: "eminaCoiffure",
+    role: "Développeuse FullStack (Conception, Déploiement & SEO)",
+    icon: "/images/logos/emina-coiffure.jpeg", // replace with your actual logo filename
+    company: "Emina Coiffure",
+    period: "Fév. 2026 — Présent",
+    tags: [
+      "React",
+      "Vite",
+      "TypeScript",
+      "Firebase",
+      "Resend",
+      "Cloudflare Pages",
+      "SEO",
+    ],
+  },
+  {
+    key: "clarsi",
+    role: "Développeuse FullStack C# / React.js",
+    icon: "/images/logos/clarsi.jpg",
+    company: "Clarsi",
+    period: "Fév. 2026 — Août 2026",
+    tags: [
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "C#",
+      "ASP.NET Core",
+      "Zod",
+      "Git",
+    ],
   },
   {
     key: "gottaphish",
