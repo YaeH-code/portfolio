@@ -18,7 +18,7 @@ const FORMATIONS: Formation[] = [
     key: "studi",
     icon: "/images/logos/studi.jpg",
     school: "Studi",
-    period: "2025 - 2026",
+    period: "2026 - 2027",
     tags: [
       "Node.js",
       "Angular",

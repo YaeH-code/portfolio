@@ -6,7 +6,7 @@
   },
   "hero": {
     "introPart1": "Développeuse Full-Stack spécialisée en",
-    "introPart2": "et titulaire d'une licence. Passionnée par le code, j'apprends vite et j'aime concevoir des architectures robustes. Rigoureuse, organisée et curieuse de nature, je m'adapte rapidement pour apporter une réelle valeur ajoutée à vos équipes dès mon arrivée."
+    "introPart2": "et titulaire d'une licence. Formée au développement web, mobile et C# / .NET, je maîtrise Angular (v17 à v21), Capacitor, React, Next.js, Firebase, les API REST, Docker, la CI/CD et le déploiement cloud. Autonome, rigoureuse et curieuse de nature, j'attache une grande importance à la fiabilité, la sécurité et la maintenabilité des applications en production afin d'apporter une réelle valeur ajoutée à vos équipes dès mon arrivée."
   },
   "badge": {
     "open": "Disponible",
@@ -16,73 +16,95 @@
     "technicalTitle": "💻 Expertise Technique",
     "softSkillsTitle": "✨ Soft Skills",
     "technicalItems": [
-      "Programmation Orientée Objet (POO)",
-      "C# .NET, Java, PHP, TypeScript",
-      "React, Angular, Next, Laravel",
-      "HTML5, CSS3, JavaScript",
-      "SQL, PostgreSQL, NoSQL",
-      "(Développement de fonctionnalités dynamiques, intégration d'API)"
+      "Langages : TypeScript, C#, SQL, HTML5, CSS3 / SCSS, JavaScript, PHP, Java",
+      "Frameworks Front-End & Mobile : Angular (v17–21), Capacitor, React, Next.js, Blazor, Vite, Hugo",
+      "Frameworks Back-End & Architecture : .NET (jusqu'à .NET 10), ASP.NET Core, Clean Architecture, Result Pattern, Laravel",
+      "Bases de données & BaaS : Entity Framework Core (EF Core), Firebase (Firestore & règles de sécurité), PostgreSQL, MySQL, NoSQL",
+      "DevOps, Cloud & Qualité : Git, Docker, pipelines CI/CD, Cloudflare (Pages, DNS), Resend API, tests E2E Playwright, tests unitaires & d'intégration, Agile"
     ],
     "softItems": [
-      "Capacité d'adaptation rapide",
-      "Curiosité technologique constante",
-      "Rigueur et sens de l'organisation",
-      "Engagement & esprit d'équipe"
+      "Autonomie et rigueur en environnement de production",
+      "Exigence sur la fiabilité, la sécurité et la maintenabilité du code",
+      "Capacité d'adaptation rapide et collaboration Agile",
+      "Curiosité technologique constante et sens de l'organisation"
     ]
+  },
+  "languages": {
+    "heading": "Langues",
+    "items": [
+      "Français : Courant / Bilingue",
+      "Japonais : Natif",
+      "Anglais : Courant (Certifié WallStreetEnglish)",
+      "Chinois : Intermédiaire"
+    ]
+  },
+  "contact": {
+    "heading": "Coordonnées & Liens",
+    "email": "uhm.yae@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/yae-umehara",
+    "portfolio": "https://portfolio.occy.ovh/"
   },
   "projects": {
     "heading": "Projets",
     "eminaCoiffure": {
-      "description": "Une application React.js élégante au service d'un véritable salon de coiffure visagiste, mêlant vitrine digitale et réservation intelligente avec un blocage des créneaux sur-mesure selon la prestation choisie."
+      "description": "Application web de réservation en ligne (SPA React / Vite, Mobile-First) et vitrine de marque pour un salon de coiffure-visagiste spécialisé dans les soins 100 % naturels. Architecture BaaS sous Firebase (Firestore, règles de sécurité strictes pour l'isolation des réservations clients), envoi automatique d'e-mails de confirmation via l'API Resend, déploiement continu (CI/CD), DNS et protection DDoS via Cloudflare Pages."
     },
     "innovEvents": {
-      "description": "Une solution client-serveur conteneurisée (Web et API Docker) centralisant la gestion événementielle d'une agence via un CRM fiable, la génération automatique de devis PDF et un suivi collaboratif des tâches."
+      "description": "Une solution client-serveur conteneurisée (Web et API Docker) centralisant la gestion événementielle d'une agence via un CRM fiable, l'automatisation de la génération de devis PDF et un suivi collaboratif des tâches."
     },
     "gottaPostal": {
-      "description": "Une plateforme SMTP gratuite et performante dédiée à l'envoi d'e-mails, la gestion de campagnes marketing et la réalisation de tests légaux de sensibilisation au phishing."
+      "description": "Une application web performante développée avec React et Hugo, entièrement conteneurisée sous Docker et déployée via Cloudflare, offrant un accès sécurisé à un serveur SMTP dédié à l'envoi d'e-mails, la gestion de campagnes et la réalisation de tests légaux de sensibilisation au phishing."
     }
   },
   "experiences": {
     "clarsi": {
-      "role": "Développeur Full Stack React.js / C# .NET",
-      "description": "Développement d'une application web en React / Next.js dédiée à la gestion des comptes personnels des abonnés et adhérents de la Fédération Française de la Randonnée. Intégration de validations de données strictes avec Zod et consommation sécurisée d'une API Gateway via Axios. Exploitation des stratégies de rendu hybrides de Next.js pour optimiser les performances d'affichage et la vitesse de chargement initial de l'espace adhérent."
+      "role": "Développeuse FullStack C# / React.js",
+      "description": "Participation au développement de la solution FFRandonnée (API ASP.NET Core & Client React Next.js) dédiée aux abonnés et adhérents de la Fédération Française de la Randonnée. Développement Front-End sous React et Next.js d'après maquettes, axé sur la performance d'affichage, le rendu hybride et la fluidité de l'expérience utilisateur. Modélisation des données et création de services HTTP sous ASP.NET Core pour l'intégration et la consommation sécurisée d'API REST. Implémentation de formulaires multi-étapes sécurisés par validation stricte avec Zod, gestion fine des droits d'accès selon les rôles utilisateurs et collaboration au sein d'une équipe Agile."
     },
     "sosit": {
-      "role": "Développeur Full Stack C# .NET / Blazor",
-      "description": "Développement en Clean Architecture (.NET 10 / EF Core) d'une application de gestion de chantiers pour le transport routier, intégrant des composants Blazor réutilisables, des formulaires multi-étapes, la génération de PDF de Lettre de Voiture et des tests unitaires/d'intégration rigoureux."
+      "role": "Développeuse FullStack Web & Mobile",
+      "description": "Conception et développement d'une solution SaaS dans le secteur du Transport & de la Logistique en deux versions majeures. Sur la V2 (SaaS Web & Mobile) : développement cross-platform sur une base de code partagée avec Angular et Capacitor, création de composants UI réutilisables (HTML5/SCSS), intégration d'API REST sécurisées en contexte multi-tenant et participation active aux pipelines CI/CD ainsi qu'aux builds conteneurisés sous Docker. Sur la V1 (Gestion de chantiers - .NET 10) : modélisation des données, gestion des migrations avec EF Core en Clean Architecture, développement de services C# appliquant le Result Pattern, création d'interfaces en Blazor, conception de formulaires multi-étapes, génération automatique de PDF (Lettre de Voiture) et rédaction de tests unitaires et d'intégration rigoureux."
+    },
+    "eminaCoiffure": {
+      "role": "Développeuse FullStack (Conception, Déploiement & SEO)",
+      "description": "Conception et développement de bout en bout d'une application web de réservation en ligne (React / Vite, approche Mobile-First) et vitrine de marque pour un véritable salon de coiffure à Lille (projet client réel en production). Architecture Backend-as-a-Service sous Firebase (Firestore avec règles de sécurité strictes pour la protection des données clients), blocage intelligent des créneaux selon la prestation choisie, automatisation des confirmations par e-mail via l'API Resend, déploiement continu (CI/CD), configuration DNS et sécurisation via Cloudflare Pages, ainsi que suivi de l'indexation et du référencement local (Google Search Console)."
     },
     "gottaphish": {
-      "role": "Développeur Full Stack React.js / Node.js",
-      "description": "Contribution au développement et à l'amélioration continue de la plateforme de cybersécurité GottaPhish, dédiée à la formation et à la prévention des risques de phishing via des campagnes dynamiques et personnalisées. Réalisation complète et déploiement sous Docker d'une application web (GottaPostal), généré avec Hugo, donnant accès à un serveur SMTP. Modernisation de la suite de tests end-to-end de l'application principale à l'aide de Playwright et Node.js."
+      "role": "Développeuse FullStack React, TypeScript & Node.js",
+      "description": "Contribution au développement et à l'évolution continue des plateformes de cybersécurité GottaPhish et GottaPostale, dédiées à la formation et à la prévention des risques de phishing via des campagnes dynamiques et personnalisées. Création et évolution d'interfaces utilisateurs avec React et Hugo. Rédaction, modernisation et maintenance de la suite de tests de bout en bout (E2E) avec Playwright sur une architecture Next.js / Express. Réalisation complète de la conteneurisation sous Docker, gestion des déploiements via Cloudflare et rédaction de documentations techniques complètes sous Postman et Wiki.js."
     },
     "optitmome": {
       "role": "Webmaster",
       "description": "Optimisation de la satisfaction client et de la productivité interne grâce à une analyse rigoureuse des besoins et une communication fluide, concrétisées par l'intégration de maquettes sous PHP Laravel et WordPress pour offrir une UX/UI améliorée."
     },
     "cite": {
-      "role": "Développeur Full Stack",
+      "role": "Développeuse Full Stack",
       "description": "Conception et développement d'un outil collaboratif inter-services en interface directe avec l'équipe technique et le client. Ce projet a englobé la refonte UI/UX responsive, l'implémentation de vues dynamiques par profil, ainsi que la création de composants sur mesure (moteur de recherche, fenêtres modales, Iconpicker), le tout accompagné d'une gestion de versions rigoureuse sous Git/GitHub et clôturé par l'animation de la démonstration technique finale devant le client."
     }
   },
   "educations": {
     "studi": {
       "degree": "Bac +3 - Concepteur Développeur d'Applications",
-      "description": "Formation supérieure axée sur la conception d'architectures web robustes et sécurisées avec une spécialisation Angular, la gestion de bases de données relationnelles et le développement full-stack."
+      "description": "Formation supérieure axée sur la conception d'architectures web robustes et sécurisées avec une spécialisation approfondie sur Angular (v17 à v21), la gestion de bases de données relationnelles et le développement full-stack."
     },
     "m2i": {
-      "degree": "Certification - Microsoft Certified Professional Developer (MCPD)",
-      "description": "Formation intensive de professionnalisation en Programmation Orientée Objet (POO) avec C# et .NET 10, axée sur la conception et la réalisation d'API REST robustes via ASP.NET et Entity Framework Core."
+      "degree": "Certification MCPD — Microsoft Certified Developer C#",
+      "description": "Formation intensive de professionnalisation en Programmation Orientée Objet (POO) avec C# et .NET, axée sur la conception et la réalisation d'API REST robustes via ASP.NET Core et Entity Framework Core."
     },
     "afpa": {
       "degree": "Bac +2 - Développeur Web et Web Mobile",
-      "description": "Apprentissage intensif des fondamentaux du web, intégration responsive, et création d'applications web dynamiques avec des frameworks modernes."
+      "description": "Apprentissage intensif des fondamentaux du web, de l'intégration responsive et de la création d'applications web dynamiques avec des frameworks modernes."
+    },
+    "wallStreetEnglish": {
+      "degree": "Certification Anglais (WallStreetEnglish",
+      "description": "Formation linguistique et obtention d'une certification attestant d'un niveau d'anglais courant et professionnel."
     },
     "kokugakuin": {
-      "degree": "Bac +4 Diplôme universitaire, Professeur de Langue",
-      "description": "Travail approfondi d'analyse, d'investigation scientifique et d'archivage de manuscrits anciens (~ 2000 ans), combiné à la conception de programmes de formation sur mesure, adaptés avec précision aux besoins spécifiques des apprenants."
+      "degree": "Bac +4 - Enseignement & Littérature",
+      "description": "Diplôme universitaire de professeur de littérature, alliant un travail approfondi d'analyse, d'investigation scientifique et d'archivage de manuscrits anciens (~ 2000 ans) à la conception de programmes de formation sur mesure, adaptés avec précision aux besoins spécifiques des apprenants."
     }
   },
   "footer": {
-    "text": "Portfolio • Développeur Full Stack"
+    "text": "Portfolio • Développeuse Full-Stack"
   }
 }
