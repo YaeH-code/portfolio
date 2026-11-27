@@ -23,7 +23,7 @@ interface Experience {
 const EXPERIENCES: Experience[] = [
   {
     key: "sosit",
-    role: "Développeuse FullStack Web & Mobile",
+    role: "Développeur Full Stack C# .NET / Blazor",
     icon: "/images/logos/sas.jpeg",
     company: "Sos - IT",
     period: "Nov. 2025 — Présent",
